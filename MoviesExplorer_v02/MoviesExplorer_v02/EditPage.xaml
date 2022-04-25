@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MoviesExplorer_v02.EditPage">
+    <ContentPage.Content>
+        <Grid Padding="15" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <ImageButton x:Name="ImageBtn" Source="https://shinden.pl/res/other/placeholders/title/225x350.jpg" 
+                         Grid.Column="0" Grid.Row="0" 
+                         Clicked="ImageBtn_Clicked"  Aspect="AspectFill" 
+                         HeightRequest="180" WidthRequest="120" />
+
+            <Editor x:Name="TitleEntry" Placeholder="Title" Text="" 
+                   Grid.Column="1" Grid.Row="0" />
+
+            <ScrollView Grid.ColumnSpan="2" Grid.Row="1">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <StackLayout x:Name="GenreStackLeft" Grid.Column="0" />
+                    <StackLayout x:Name="GenreStackRight" Grid.Column="1" />
+                </Grid>
+            </ScrollView>
+            
+
+            <Editor x:Name="DetailsEntry" Placeholder="Delails" Text="" 
+                   Grid.ColumnSpan="2" Grid.Row="2" />
+
+            <Button x:Name="DeleteBtn" Text="Delete" 
+                    Clicked="DeleteBtn_Clicked" 
+                    Grid.Column="0" Grid.Row="3" 
+                    VerticalOptions="Start" />
+            <Button x:Name="SaveBtn" Text="Save" 
+                    Clicked="SaveBtn_Clicked" 
+                    Grid.Column="1" Grid.Row="3" 
+                    VerticalOptions="End" />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

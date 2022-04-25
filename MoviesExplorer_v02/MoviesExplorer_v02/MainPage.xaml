@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:MoviesExplorer_v02" xmlns:local1="clr-namespace:MoviesExplorer_v02.TempTest"
+             x:Class="MoviesExplorer_v02.MainPage">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem x:Name="FiltersBtn" Text="Filters" 
+                     Clicked="FiltersBtn_Clicked" />
+        <ToolbarItem x:Name="AddBtn" Text="Add"
+                     Clicked="AddBtn_Clicked" />
+    </ContentPage.ToolbarItems>
+    
+    
+    <StackLayout Orientation="Horizontal">
+        <ScrollView x:Name="FiltersViewer" IsVisible="false" MinimumWidthRequest="200">
+            <StackLayout x:Name="FiltersSL" >
+
+            </StackLayout>
+        </ScrollView>
+
+        <StackLayout>
+            <SearchBar x:Name="SearchB" Placeholder="Search" Text="" 
+                   TextChanged="SearchB_TextChanged" 
+            />
+
+            <Label x:Name="ListLabel" Text="NO RESULTS" IsVisible="true" 
+                   VerticalOptions="Start" HorizontalOptions="Center"/>
+
+
+            <local1:CustomCheckBox x:Name="TestCheckBox" Clicked="TestCheckBox_Clicked" />
+
+
+
+
+
+
+
+
+
+
+            <ListView x:Name="MovieListView"  
+                      ItemSelected="MovieListView_ItemSelected" ItemTapped="MovieListView_ItemTapped" 
+                      HasUnevenRows="True" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell Height="90">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="*" />
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Image x:Name="ItemImage" 
+                                           Grid.RowSpan="2" 
+                                           Source="{Binding MovieImageUrl}" 
+                                           Aspect="AspectFill" 
+                                           HeightRequest="90"
+                                           WidthRequest="60" />
+                                <Label x:Name="ItemTitle" 
+                                           Grid.Column="1" Grid.Row="0" 
+                                           Text="{Binding MovieTitle}" 
+                                           FontAttributes="Bold" 
+                                           LineBreakMode="TailTruncation" 
+                                           MaxLines="3" />
+                                <Label x:Name="ItemDetails" 
+                                           Grid.Column="1" Grid.Row="1" 
+                                           Text="{Binding MovieGenre}" 
+                                           VerticalOptions="End" 
+                                           TextDecorations="Underline" 
+                                           LineBreakMode="TailTruncation" 
+                                           MaxLines="2" />
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            
+        </StackLayout>
+    </StackLayout>
+</ContentPage>
